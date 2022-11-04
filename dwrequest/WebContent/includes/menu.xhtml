@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+	<ul class="sidebar-menu">
+		<li><p:link href="/index.xhtml">
+				<i class="fa fa-home"></i>
+				<span>Inicio</span>
+			</p:link></li>
+
+		<li class="treeview"><p:link href="#"
+				rendered="#{beanSession.acesso('menu_cadastro')}">
+				<i class="fa fa-th-list"></i>
+				<span>Cadastro</span>
+				<span class="pull-right-container"> <i
+					class="fa fa-angle-left pull-right"></i>
+				</span>
+			</p:link>
+			<ul class="treeview-menu">
+			
+				<li><p:link href="/pages/cadastros/cidade/lista-cidade.xhtml"
+						rendered="#{beanSession.acesso('cadastro_cidade')}">
+						<i class="fa fa-bars"></i>
+						<span>Cidade</span>
+					</p:link></li>
+				<li><p:link href="/pages/cadastros/estado/lista-estado.xhtml"
+						rendered="#{beanSession.acesso('cadastro_estado')}">
+						<i class="fa fa-bars"></i>
+						<span>Estado</span>
+					</p:link></li>
+					
+			</ul></li>
+
+		<li class="treeview"><p:link href="#"
+				rendered="#{beanSession.acesso('menu_sistema')}">
+				<i class="fa fa-gears"></i>
+				<span>Sistema</span>
+				<span class="pull-right-container"> <i
+					class="fa fa-angle-left pull-right"></i>
+				</span>
+			</p:link>
+
+			<ul class="treeview-menu">
+				<li><p:link href="/pages/sistema/backup/backup.xhtml"
+						rendered="#{beanSession.acesso('sistema_backup')}">
+						<i class="fa fa-database"></i>
+						<span>Backup</span>
+					</p:link></li>
+
+				<li><p:link href="/pages/sistema/empresa/lista-empresa.xhtml"
+						rendered="#{beanSession.acesso('sistema_empresa')}">
+						<i class="fa fa-bars"></i>
+						<span>Empresa</span>
+					</p:link></li>
+
+				<li><p:link href="/pages/sistema/usuario/lista-usuario.xhtml"
+						rendered="#{beanSession.acesso('sistema_usuario')}">
+						<i class="fa fa-user"></i>
+						<span>Usuario</span>
+					</p:link></li>
+
+				<li><p:link href="/pages/sistema/modulo/lista-modulo.xhtml"
+						rendered="#{beanSession.acesso('sistema_modulo')}">
+						<i class="fa fa-bars"></i>
+						<span>Módulo</span>
+					</p:link></li>
+
+
+			</ul></li>
+
+	</ul>
+</ui:composition>
