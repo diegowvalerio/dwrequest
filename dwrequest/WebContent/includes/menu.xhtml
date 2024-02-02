@@ -20,6 +20,11 @@
 			</p:link>
 			<ul class="treeview-menu">
 			
+				<li><p:link href="/pages/cadastros/cadastrogeral/lista-cadastrogeral.xhtml"
+						rendered="#{beanSession.acesso('cadastro_cadastrogeral')}">
+						<i class="fa fa-bars"></i>
+						<span>Clientes</span>
+					</p:link></li>				
 				<li><p:link href="/pages/cadastros/cidade/lista-cidade.xhtml"
 						rendered="#{beanSession.acesso('cadastro_cidade')}">
 						<i class="fa fa-bars"></i>
@@ -29,6 +34,12 @@
 						rendered="#{beanSession.acesso('cadastro_estado')}">
 						<i class="fa fa-bars"></i>
 						<span>Estado</span>
+					</p:link></li>
+					
+				<li><p:link href="/pages/cadastros/confcadastro.xhtml"
+						rendered="#{beanSession.acesso('cadastro_confcadastro')}">
+						<i class="fa fa-gears"></i>
+						<span>Configuração</span>
 					</p:link></li>
 					
 			</ul></li>

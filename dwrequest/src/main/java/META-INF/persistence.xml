@@ -8,8 +8,10 @@
 	<class>br.com.dw.request.classe.Usuario</class>
 	<class>br.com.dw.request.classe.Modulo</class>
 	<class>br.com.dw.request.classe.UsuarioModulo</class>
-	
-	
+	<class>br.com.dw.request.classe.CadastroGeral</class>
+	<class>br.com.dw.request.classe.Contato</class>
+	<class>br.com.dw.request.classe.Endereco</class>
+	<class>br.com.dw.request.classe.ConfCadastro</class>
 	
 	<properties>
 			

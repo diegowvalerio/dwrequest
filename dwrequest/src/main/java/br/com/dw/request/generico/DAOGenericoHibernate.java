@@ -12,6 +12,7 @@ import org.hibernate.Session;
 import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Restrictions;
 
+import br.com.dw.request.classe.CadastroGeral;
 import br.com.dw.request.classe.Cidade;
 
 
@@ -20,8 +21,10 @@ public class DAOGenericoHibernate<E> implements DAOGenerico<E>, Serializable{
 	
 	@Inject
 	protected EntityManager manager;
+	@SuppressWarnings("rawtypes")
 	private Class classeEntidade;
 	
+	@SuppressWarnings("rawtypes")
 	public DAOGenericoHibernate(Class classeEntidade){
 		this.classeEntidade = classeEntidade;
 	}
@@ -46,24 +49,27 @@ public class DAOGenericoHibernate<E> implements DAOGenerico<E>, Serializable{
 	}
 
 	
+	@SuppressWarnings("unchecked")
 	@Override
 	public E consultar(Integer id) {
 		return (E) manager.find(classeEntidade, id);
 	}
 
 	
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<E> consultar() {
 		return manager.createQuery("from "+classeEntidade.getSimpleName()).getResultList();
 	}
 	
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<E> consultar_ativos() {		
 		return manager.createQuery("from "+classeEntidade.getSimpleName()+" where situacao = true").getResultList();
 	}
 		
 	
-	@SuppressWarnings({ "unchecked" })
+	@SuppressWarnings({ "unchecked", "deprecation" })
 	@Override
 	public List<E> buscacidadenome(String e){
 		Session session = manager.unwrap(Session.class);
@@ -74,8 +80,44 @@ public class DAOGenericoHibernate<E> implements DAOGenerico<E>, Serializable{
 		return criteria.list();
 	}
 	
+	@SuppressWarnings({ "unchecked", "deprecation" })
+	@Override
+	public List<E> buscavendedor(boolean bovendedor){
+		
+		Session session = manager.unwrap(Session.class);
+		Criteria criteria = session.createCriteria(CadastroGeral.class);
+		
+		criteria.add(Restrictions.eq("bovendedor", bovendedor));
+		
+		return criteria.list();
+	}
+	
+	@SuppressWarnings({ "unchecked", "deprecation" })
+	@Override
+	public List<E> buscacliente(boolean bocliente){
+		
+		Session session = manager.unwrap(Session.class);
+		Criteria criteria = session.createCriteria(CadastroGeral.class);
+		
+		criteria.add(Restrictions.eq("bocliente", bocliente));
+		
+		return criteria.list();
+	}
+	
+	@SuppressWarnings({ "unchecked", "deprecation" })
+	@Override
+	public List<E> buscacidadeibge(String e){
+		Session session = manager.unwrap(Session.class);
+		Criteria criteria = session.createCriteria(Cidade.class);
+		
+		criteria.add(Restrictions.eq("codigoibge", e.toUpperCase()));
+		
+		return criteria.list();
+	}
+	
 	//painel de resumo
 	
+	@SuppressWarnings({ "deprecation", "unchecked" })
 	public List<E> clientesnovos(Date data, Date data2){
 		
 		Session session = manager.unwrap(Session.class);

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core" xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui" xmlns:adm="http://github.com/adminfaces"
+                template="/WEB-INF/templates/template.xhtml">
+
+    <ui:define name="title">
+        Configurações Cadastro
+    </ui:define>
+
+    <ui:define name="body">
+
+		<h:form id="form"
+			rendered="#{beanSession.acesso('cadastro_confcadastro')}">
+			<p:growl id="erros" showDetail="true" sticky="false" />
+				
+				<div class="row" >
+				<div class="col-md-3">
+
+					<p:tabView dynamic="false" cache="false" id="tabIntegracao">
+
+						<p:tab title="Sintegra  WS" id="tabSintegraWS">
+							<p:panelGrid columns="2" id="tabSintegraWS-p" >
+
+								<p:outputLabel value="Sintegra WS" for="integra_sintegraws" />
+								<p:selectBooleanCheckbox id="integra_sintegraws"
+									value="#{beanConfCadastro.confcadastro.integra_sintegraws}" />
+
+								<p:outputLabel value="Token" for="sintegraws_token" />
+								<p:inputText id="sintegraws_token"
+									value="#{beanConfCadastro.confcadastro.sintegraws_token}" />
+
+								<p:outputLabel value="Saldo de Consultas"
+									for="sintegraws_qtd_consultas_disponiveis" />
+								<p:inputText id="sintegraws_qtd_consultas_disponiveis"
+									value="#{beanConfCadastro.confcadastro.sintegraws_qtd_consultas_disponiveis}"
+									readonly="true" disabled="true" />
+									
+								<p:commandButton action="#{beanConfCadastro.sintegraws_verificasaldo()}" value="Verificar Saldo"
+									icon="fa fa-check" styleClass="btn-success" update=":form:erros :form:tabIntegracao:tabSintegraWS-p" />
+
+							</p:panelGrid>
+						</p:tab>
+
+					</p:tabView>
+				</div>
+
+			</div>
+			
+			<p:separator/>
+			
+			<p:commandButton action="#{beanConfCadastro.salvar()}" value="Salvar"
+				icon="fa fa-check" styleClass="btn-primary" update="erros" />
+		</h:form>
+
+	</ui:define>
+
+</ui:composition>

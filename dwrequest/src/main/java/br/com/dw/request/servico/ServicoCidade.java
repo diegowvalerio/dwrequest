@@ -38,6 +38,14 @@ public class ServicoCidade implements Serializable{
 		return v;
 	}
 	
+	public List<Cidade> buscacidadeibge(String e){
+		List<Cidade> v = null;
+		if(!e.equals("")){
+			v = dao.buscacidadeibge(e);
+		}
+		return v;
+	}
+	
 	@Transacao
 	public boolean excluir(Integer id){
 		return dao.excluir(id);

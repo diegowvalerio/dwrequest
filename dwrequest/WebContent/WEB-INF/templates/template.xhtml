@@ -31,6 +31,30 @@
 
 	<ui:define name="menu">
 		<ui:include src="/includes/menu.xhtml" />
+		<script type="text/javascript">
+		
+        const sidebar = document.getElementById('sidebar');
+        const sidebarToggleLink = document.querySelector('.sidebar-toggle');
+
+        if(!isMobile()) {
+        	document.addEventListener('DOMContentLoaded', function () {
+                clickSidebarToggle();
+            });
+        	
+        	sidebar.addEventListener('mouseenter', () => {
+                // Simule um clique no link quando o mouse entra no sidebar
+                if (sidebarToggleLink) {
+                	clickSidebarToggle();
+                }
+            });
+        }
+        
+        function clickSidebarToggle() {
+            if (sidebarToggleLink) {
+            	sidebarToggleLink.click();
+            }
+        }
+    </script>
 	</ui:define>
 
 	<ui:define name="top-menu">
@@ -39,6 +63,7 @@
 
 	<ui:define name="content-end">
 		<section class="content">
+		
 			<ui:insert name="code" />
 		</section>
 	</ui:define>
@@ -60,6 +85,6 @@
                     showBar();
                 });
             }
-        </script>
+    </script>
 
 </ui:composition>

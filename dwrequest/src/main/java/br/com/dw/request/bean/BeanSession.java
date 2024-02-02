@@ -36,7 +36,7 @@ public class BeanSession implements Serializable {
 		for (Usuario acesso : lista) {
 		if (acesso.getLogin().equals(usuarioconectado())){
 			usuario = acesso;
-			//System.out.println(usuario.getLogin());
+			System.out.println(usuario.getLogin());
 		}	
 	}
 		
