@@ -9,6 +9,8 @@ import javax.persistence.*;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
+import com.google.gson.annotations.Expose;
+
 
 @Entity
 @Table(name="tbcadastrogeral")
@@ -17,13 +19,16 @@ public class CadastroGeral implements Serializable {
 	
 	@Id
 	@GeneratedValue (strategy=GenerationType.IDENTITY)
+	@Expose
 	private Integer idcadastrogeral;
 	@Column(nullable=false,columnDefinition="varchar(250)")
+	@Expose
 	private String nome;
 	@Column(nullable=false) 
 	@Temporal(TemporalType.DATE)
 	private Date dtcadastro;
 	@Column(nullable=false, columnDefinition= "BOOLEAN DEFAULT TRUE")
+	@Expose
 	private Boolean situacao;
 	@Column(nullable=true, columnDefinition="varchar(250)")
 	private String observacao;
@@ -32,6 +37,7 @@ public class CadastroGeral implements Serializable {
 	@Column(nullable=false, columnDefinition= "BOOLEAN DEFAULT FALSE")
 	private Boolean bocliente;
 	@Column(nullable=false, columnDefinition= "BOOLEAN DEFAULT FALSE")
+	@Expose
 	private Boolean bovendedor;
 	
 	//fiscal

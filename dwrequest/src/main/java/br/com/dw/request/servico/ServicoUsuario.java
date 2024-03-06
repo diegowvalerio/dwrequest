@@ -40,4 +40,12 @@ public class ServicoUsuario implements Serializable{
 	public List<Usuario> consultar(){
 		return dao.consultar();
 	}
+	
+	public Usuario consultar(Integer id) {
+		return dao.consultar(id);
+	}
+	
+	public List<Usuario> consultarlogin(String login, String senha){
+		return dao.consultarlogin(login, senha);
+	}
 }

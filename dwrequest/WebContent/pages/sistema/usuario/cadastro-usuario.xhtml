@@ -29,14 +29,22 @@
 						<p:outputLabel value="Data Cadastro:" for="dtcadastro" />
 						<p:calendar  disabled="true" autocomplete="#{beanUsuario.data}" locale="pt_BR" id="dtcadastro" value="#{beanUsuario.usuario.dtcadastro}"  pattern="dd/MM/yyyy" mask="true" required="true" effect="fold"/>
 						
-						<p:outputLabel value="Login:" for="login" />
-						<p:inputText id="login" value="#{beanUsuario.usuario.login}" required="true" onkeyup="this.value=this.value.toUpperCase()"/>
+						<p:outputLabel value="Login (minúsculo):" for="login" />
+						<p:inputText id="login" value="#{beanUsuario.usuario.login}" required="true" onkeyup="this.value=this.value.toLowerCase()"/>
 						
-						<p:outputLabel value="Senha: " for="senha" />
-						<p:password id="senha" value="#{beanUsuario.usuario.senha}" required="true"/>
+						<p:outputLabel value="Senha (minúsculo): " for="senha" />
+						<p:password id="senha" value="#{beanUsuario.usuario.senha}" required="true" onkeyup="this.value=this.value.toLowerCase()"/>
 						
 						<p:outputLabel value="Ativo : " for="situacao" />
 						<p:selectBooleanCheckbox id="situacao" value="#{beanUsuario.usuario.situacao}" required="true"/>
+						
+						<p:outputLabel value="Vendedor: " for="vendedor" />			
+                   		<p:selectOneMenu id="vendedor"	value="#{beanUsuario.usuario.vendedor}" filter="true" filterMatchMode="contains" converter="conversorCadastroGeral">
+						<f:selectItem itemLabel="Selecionar" noSelectionOption="true" />
+						<f:selectItems value="#{beanUsuario.listavendedores}" var="vendedores"
+								itemLabel="#{vendedores.idcadastrogeral} - #{vendedores.nome}" itemValue="#{vendedores}" />
+                   		</p:selectOneMenu>
+                   		
 					</p:panelGrid>
 
 					

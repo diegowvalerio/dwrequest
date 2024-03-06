@@ -132,4 +132,10 @@ public class DAOGenericoHibernate<E> implements DAOGenerico<E>, Serializable{
 	}
 	
 	
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<E> consultarlogin(String login, String senha){
+		return manager.createQuery("from "+classeEntidade.getSimpleName()+" where login = '"+login+"' and senha = '"+senha+"' and situacao = true and vendedor_idcadastrogeral is not null ").getResultList();
+	}
+	
 }

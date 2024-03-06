@@ -69,6 +69,10 @@
 						<h:outputLabel value="#{usuario.login}" />
 						</p:column>
 						
+						<p:column headerText="Vendedor:">
+						<h:outputLabel value="#{usuario.vendedor.idcadastrogeral}" />
+						 </p:column>
+						
 						<p:column width="15%" headerText="Operações"
 							style="text-align:center">
 							<p:commandButton action="#{beanListaUsuario.excluir()}"
@@ -110,14 +114,21 @@
 						<p:outputLabel value="Data Cadastro:" for="dtcadastro" />
 						<p:calendar disabled="true" locale="pt_BR" id="dtcadastro" value="#{beanListaUsuario.usuario.dtcadastro}" pattern="dd/MM/yyyy" mask="true"  effect="fold"/>
 						
-						<p:outputLabel value="Login:" for="login" />
-						<p:inputText id="login"  value="#{beanListaUsuario.usuario.login}" onkeyup="this.value=this.value.toUpperCase()"/>
+						<p:outputLabel value="Login (minúsculo):" for="login" />
+						<p:inputText id="login"  value="#{beanListaUsuario.usuario.login}" onkeyup="this.value=this.value.toLowerCase()"/>
 						
-						<p:outputLabel value="Senha: " for="senha" />
-						<p:password id="senha" value="#{beanListaUsuario.usuario.senha}" redisplay="true" />
+						<p:outputLabel value="Senha (minúsculo): " for="senha" />
+						<p:password id="senha" value="#{beanListaUsuario.usuario.senha}" redisplay="true" onkeyup="this.value=this.value.toLowerCase()"/>
 						
 						<p:outputLabel value="Ativo: " for="situacao" />
 						<p:selectBooleanCheckbox id="situacao" value="#{beanListaUsuario.usuario.situacao}" />
+						
+						<p:outputLabel value="Vendedor: " for="vendedor" />			
+                   		<p:selectOneMenu id="vendedor"	value="#{beanListaUsuario.usuario.vendedor}" filter="true" filterMatchMode="contains" converter="conversorCadastroGeral">
+						<f:selectItem itemLabel="Selecionar" noSelectionOption="true" />
+						<f:selectItems value="#{beanListaUsuario.listavendedores}" var="vendedores"
+								itemLabel="#{vendedores.idcadastrogeral} - #{vendedores.nome}" itemValue="#{vendedores}" />
+                   		</p:selectOneMenu>
 										
 					</p:panelGrid>
 					<p:commandButton icon="fa fa-check" styleClass="btn-primary"

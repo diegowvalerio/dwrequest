@@ -11,6 +11,8 @@ import javax.persistence.*;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
+import com.google.gson.annotations.Expose;
+
 @Entity
 @Table(name="tbusuario")
 public class Usuario implements Serializable {
@@ -18,23 +20,32 @@ public class Usuario implements Serializable {
 	
 	@Id
 	@GeneratedValue (strategy=GenerationType.IDENTITY)
+	@Expose
 	private Integer idusuario;
 	@Column(nullable=false,columnDefinition="varchar(250)")
+	@Expose
 	private String nome;
 	@Column(nullable=false) 
 	@Temporal(TemporalType.DATE)
 	private Date dtcadastro;
 	@Column(nullable=false, columnDefinition= "BOOLEAN DEFAULT TRUE")
+	@Expose
 	private Boolean situacao;
 	
 	@Column(nullable=false, columnDefinition="varchar(10)")
+	@Expose
 	private String login;
 	@Column(nullable=false, columnDefinition="varchar(100)")
+	@Expose
 	private String senha;
 	
 	@OneToMany(mappedBy="usuario", cascade ={CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REMOVE },orphanRemoval = true,fetch = FetchType.EAGER)
 	@Fetch(FetchMode.SUBSELECT)
     private List<UsuarioModulo> usuariomodulos = new ArrayList<>();
+	
+	@OneToOne
+	@Expose
+	private CadastroGeral vendedor;
 		
 
 	public Usuario() {
@@ -88,6 +99,14 @@ public class Usuario implements Serializable {
 
 	public void setUsuariomodulos(List<UsuarioModulo> usuariomodulos) {
 		this.usuariomodulos = usuariomodulos;
+	}
+
+	public CadastroGeral getVendedor() {
+		return vendedor;
+	}
+
+	public void setVendedor(CadastroGeral vendedor) {
+		this.vendedor = vendedor;
 	}
 
 	@Override

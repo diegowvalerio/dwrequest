@@ -8,7 +8,7 @@ Database? _db;
 
   @override
   Future<List<Contato>> find() {
-    // TODO: implement find
+   
     throw UnimplementedError();
   }
 
@@ -22,7 +22,7 @@ Database? _db;
   @override
   save(Contato contato) async {
     _db = await Conexao.get();
-    var sql;
+    String sql;
     if(contato.id == null){
       sql = 'INSERT INTO contato (nome,telefone,email,urlavatar) VALUES(?,?,?,?)';
       _db?.rawInsert(sql,[contato.nome,contato.telefone,contato.email,contato.urlavatar]);

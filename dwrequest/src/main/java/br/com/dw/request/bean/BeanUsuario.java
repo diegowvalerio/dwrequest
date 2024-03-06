@@ -9,7 +9,9 @@ import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import br.com.dw.request.classe.CadastroGeral;
 import br.com.dw.request.classe.Usuario;
+import br.com.dw.request.servico.ServicoCadastroGeral;
 import br.com.dw.request.servico.ServicoUsuario;
 import br.com.dw.request.util.FacesMessageUtil;
 
@@ -22,6 +24,11 @@ public class BeanUsuario implements Serializable{
 	@Inject
 	private ServicoUsuario servico;
 	private List<Usuario> lista;
+	
+	@Inject
+	private ServicoCadastroGeral servicovendedor;
+	private List<CadastroGeral> listavendedores;
+	
 	private Date data;
 
 	public BeanUsuario() {
@@ -32,6 +39,8 @@ public class BeanUsuario implements Serializable{
 	public void carregar(){
 		this.usuario = this.getUsuario();
 		this.usuario.setDtcadastro(data);
+		
+		listavendedores = servicovendedor.buscavendedor(true);
 	}	
 	
 	public String salvar(){
@@ -86,6 +95,14 @@ public class BeanUsuario implements Serializable{
 
 	public void setLista(List<Usuario> lista) {
 		this.lista = lista;
+	}
+
+	public List<CadastroGeral> getListavendedores() {
+		return listavendedores;
+	}
+
+	public void setListavendedores(List<CadastroGeral> listavendedores) {
+		this.listavendedores = listavendedores;
 	}
 		
 

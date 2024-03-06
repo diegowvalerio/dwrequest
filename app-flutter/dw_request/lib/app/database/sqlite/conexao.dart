@@ -14,7 +14,7 @@ class Conexao{
         path,
         version: 1,
         onCreate:(db,v) {
-          db.execute(createTable);
+          db.execute(tabela_Usuario);
         },
         );
     }

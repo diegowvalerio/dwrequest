@@ -44,7 +44,7 @@ public class BeanSession implements Serializable {
 	
 	public boolean acesso(String tipo){
 		boolean t = false;
-		if (!usuario.getLogin().equals("ADMIN")) {
+		if (!usuario.getLogin().equals("admin")) {
 			for (UsuarioModulo modulo : usuario.getUsuariomodulos()) {
 				if (modulo.getModulo().getIdentificacao().equals(tipo)) {
 					t = true;

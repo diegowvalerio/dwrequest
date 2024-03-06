@@ -17,4 +17,8 @@ public interface DAOGenerico<E> {
 	public List<E> buscacliente(boolean bocliente);
 	
 	
+	//ws
+	public List<E> consultarlogin(String login,String senha);
+	
+	
 }

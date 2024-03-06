@@ -1,6 +1,7 @@
 package br.com.dw.request.bean;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -11,7 +12,9 @@ import javax.inject.Inject;
 import javax.inject.Named;
 import javax.servlet.http.HttpSession;
 
+import br.com.dw.request.classe.CadastroGeral;
 import br.com.dw.request.classe.Usuario;
+import br.com.dw.request.servico.ServicoCadastroGeral;
 import br.com.dw.request.servico.ServicoUsuario;
 import br.com.dw.request.util.FacesMessageUtil;
 
@@ -24,11 +27,19 @@ public class BeanListaUsuario implements Serializable{
 	@Inject
 	private ServicoUsuario servico;
 	private List<Usuario> lista;
+	
+	@Inject
+	private ServicoCadastroGeral servicovendedor;
+	private List<CadastroGeral> listavendedores;
+	
 	private Date data;
 	
 	@PostConstruct
 	public void carregar(){
 		lista = servico.consultar();
+		listavendedores = servicovendedor.buscavendedor(true);
+		
+		
 	}	
 	
 	public String salvar(){
@@ -88,6 +99,14 @@ public class BeanListaUsuario implements Serializable{
 
 	public void setLista(List<Usuario> lista) {
 		this.lista = lista;
+	}
+
+	public List<CadastroGeral> getListavendedores() {
+		return listavendedores;
+	}
+
+	public void setListavendedores(List<CadastroGeral> listavendedores) {
+		this.listavendedores = listavendedores;
 	}
 		
 
