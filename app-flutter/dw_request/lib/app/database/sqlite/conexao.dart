@@ -9,12 +9,12 @@ class Conexao{
 
   static Future<Database?> get() async{
     if(_db == null){
-      var path= join(await getDatabasesPath(),'banco');
+      var path= join(await getDatabasesPath(),'banco.db');
       _db =await openDatabase(
         path,
         version: 1,
-        onCreate:(db,v) {
-          db.execute(tabela_Usuario);
+        onCreate:(Database db,int version) async {
+          await db.execute(tabela_Usuario);
         },
         );
     }

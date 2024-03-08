@@ -6,6 +6,8 @@ save(Usuario usuario);
 
 remove(int id);
 
+removeAll();
+
 Future<List<Usuario>> find();
 
 }

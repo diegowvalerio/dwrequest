@@ -7,15 +7,27 @@ class ImpDaoUsuario implements DaoUsuario{
 Database? _db;
 
   @override
-  Future<List<Usuario>> find() {
-    
-    throw UnimplementedError();
+  Future<List<Usuario>> find() async{
+    _db = await Conexao.get();
+    List<Map<String,dynamic>>? result = await _db?.query('usuario');
+    List<Usuario> lista = List.generate(result!.length, (i){
+      var linha = result[i];
+      return Usuario(
+        id: linha['id'],
+        nome: linha['nome'],
+        situacao: linha['situacao'],
+        login: linha['login'],
+        senha: linha['senha']
+      );
+    }
+    );
+    return lista;
   }
 
   @override
   remove(int id) async{
      _db = await Conexao.get();
-     var sql ='DELETE FROM contato HWERE id = ?';
+     var sql ='DELETE FROM usuario WHERE id = ?';
      _db?.rawDelete(sql,[id]);
   }
 
@@ -23,9 +35,16 @@ Database? _db;
   save(Usuario usuario) async {
     _db = await Conexao.get();
     String sql;
-    sql = 'INSERT INTO contato (id,nome,situacao,login,senha) VALUES(?,?,?,?)';
+    sql = 'INSERT INTO usuario (id,nome,situacao,login,senha) VALUES(?,?,?,?,?)';
     _db?.rawInsert(sql,[usuario.id,usuario.nome,usuario.situacao,usuario.login,usuario.senha]);
     
+  }
+  
+  @override
+  removeAll() async{
+    _db = await Conexao.get();
+     var sql ='DELETE FROM usuario';
+     _db?.rawDelete(sql);
   }
 
 }

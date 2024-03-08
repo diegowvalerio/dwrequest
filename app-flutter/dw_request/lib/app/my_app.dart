@@ -1,6 +1,7 @@
 // ignore_for_file: constant_identifier_names
 
 import 'package:dw_request/app/view/configuracao_page.dart';
+import 'package:dw_request/app/view/principal_page.dart';
 import 'package:flutter/material.dart';
 
 import 'view/login_page.dart';
@@ -10,6 +11,7 @@ class MyApp extends StatelessWidget {
   //rotas
   static const HOME = '/';
   static const CONFIGURACAO = 'configuracao';
+  static const PRINCIPAL = 'principal';
 
   @override
   Widget build(BuildContext context) {
@@ -23,6 +25,7 @@ class MyApp extends StatelessWidget {
       routes: {
         HOME:(context)=> const LoginPage(),
         CONFIGURACAO:(context)=> const ConfiguracaoPage(),
+        PRINCIPAL:(context)=> const PrincipalPage(),
       },
     );
   }

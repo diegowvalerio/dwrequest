@@ -18,4 +18,8 @@ class ServiceUsuario{
     return _dao.find();
   }
 
+  removeAll(){
+    _dao.removeAll();
+  }
+
 }
