@@ -5,7 +5,7 @@ import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
 
-import br.com.dw.request.classe.Usuario;
+import br.com.dw.request.entidades.Usuario;
 
 @FacesConverter(forClass = Usuario.class,value="conversorUsuario")
 public class UsuarioConverter implements Converter {

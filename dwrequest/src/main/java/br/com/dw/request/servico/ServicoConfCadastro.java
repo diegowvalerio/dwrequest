@@ -6,8 +6,8 @@ import java.util.List;
 import javax.enterprise.context.Dependent;
 import javax.inject.Inject;
 
-import br.com.dw.request.classe.ConfCadastro;
 import br.com.dw.request.dao.DAOConfCadastro;
+import br.com.dw.request.entidades.ConfCadastro;
 import br.com.dw.request.generico.Transacao;
 
 @Dependent

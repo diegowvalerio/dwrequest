@@ -5,7 +5,7 @@ import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
 
-import br.com.dw.request.classe.Empresa;
+import br.com.dw.request.entidades.Empresa;
 
 
 @FacesConverter(forClass = Empresa.class,value="conversorEmpresa")

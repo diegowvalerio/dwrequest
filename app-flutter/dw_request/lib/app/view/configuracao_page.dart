@@ -3,6 +3,7 @@
 import 'package:dw_request/app/view/back/configuracao_page_back.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 
 class ConfiguracaoPage extends StatelessWidget {
   const ConfiguracaoPage({super.key});
@@ -28,12 +29,12 @@ class ConfiguracaoPage extends StatelessWidget {
                   ),
           ),
         elevation: 0,
-        backgroundColor: const Color.fromARGB(255, 58, 158, 183),
+        backgroundColor: const Color.fromARGB(255, 55, 145, 230),
       ),
       body: Container(
         width: MediaQuery.of(context).size.width,
         padding: const EdgeInsets.all(27),
-        color: const Color.fromARGB(255, 179, 226, 238),
+        //color: const Color.fromARGB(255, 179, 226, 238),
         /*decoration: const BoxDecoration(
           gradient: LinearGradient(
             colors: [
@@ -85,7 +86,10 @@ class ConfiguracaoPage extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 30),
-            SizedBox(
+            Observer(builder: (context) {
+            return 
+             _back.isLoading ? const CircularProgressIndicator()
+             : SizedBox(
               width: double.infinity,
               child: CupertinoButton(
                 padding: const EdgeInsets.all(17),
@@ -98,10 +102,12 @@ class ConfiguracaoPage extends StatelessWidget {
                       fontWeight: FontWeight.w600),
                 ),
                 onPressed: () {
-                  _back.btnBaixarDados(context);
+                   _back.isLoading = true;
+                   _back.btnBaixarDados(context);
                 },
               ),
-            ),
+            );
+            }),
           ]
         ),
       ),

@@ -12,8 +12,8 @@ import javax.inject.Named;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import br.com.dw.request.classe.Cidade;
-import br.com.dw.request.classe.Empresa;
+import br.com.dw.request.entidades.Cidade;
+import br.com.dw.request.entidades.Empresa;
 import br.com.dw.request.servico.ServicoCidade;
 import br.com.dw.request.servico.ServicoEmpresa;
 import br.com.dw.request.util.FacesMessageUtil;

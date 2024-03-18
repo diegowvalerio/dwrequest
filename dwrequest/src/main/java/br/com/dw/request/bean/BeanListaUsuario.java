@@ -1,7 +1,6 @@
 package br.com.dw.request.bean;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -12,8 +11,8 @@ import javax.inject.Inject;
 import javax.inject.Named;
 import javax.servlet.http.HttpSession;
 
-import br.com.dw.request.classe.CadastroGeral;
-import br.com.dw.request.classe.Usuario;
+import br.com.dw.request.entidades.CadastroGeral;
+import br.com.dw.request.entidades.Usuario;
 import br.com.dw.request.servico.ServicoCadastroGeral;
 import br.com.dw.request.servico.ServicoUsuario;
 import br.com.dw.request.util.FacesMessageUtil;

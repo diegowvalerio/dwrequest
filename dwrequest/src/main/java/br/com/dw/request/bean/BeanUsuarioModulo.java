@@ -11,9 +11,9 @@ import javax.inject.Named;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import br.com.dw.request.classe.Modulo;
-import br.com.dw.request.classe.Usuario;
-import br.com.dw.request.classe.UsuarioModulo;
+import br.com.dw.request.entidades.Modulo;
+import br.com.dw.request.entidades.Usuario;
+import br.com.dw.request.entidades.UsuarioModulo;
 import br.com.dw.request.servico.ServicoModulo;
 import br.com.dw.request.servico.ServicoUsuario;
 import br.com.dw.request.util.FacesMessageUtil;

@@ -5,7 +5,7 @@ import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
 
-import br.com.dw.request.classe.Cidade;
+import br.com.dw.request.entidades.Cidade;
 
 
 

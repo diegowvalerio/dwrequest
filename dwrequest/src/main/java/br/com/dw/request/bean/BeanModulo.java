@@ -8,7 +8,7 @@ import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import br.com.dw.request.classe.Modulo;
+import br.com.dw.request.entidades.Modulo;
 import br.com.dw.request.servico.ServicoModulo;
 import br.com.dw.request.util.FacesMessageUtil;
 

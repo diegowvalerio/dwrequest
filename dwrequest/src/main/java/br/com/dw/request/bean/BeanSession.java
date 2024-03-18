@@ -12,8 +12,8 @@ import javax.inject.Inject;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import br.com.dw.request.classe.Usuario;
-import br.com.dw.request.classe.UsuarioModulo;
+import br.com.dw.request.entidades.Usuario;
+import br.com.dw.request.entidades.UsuarioModulo;
 import br.com.dw.request.servico.ServicoUsuario;
 
 

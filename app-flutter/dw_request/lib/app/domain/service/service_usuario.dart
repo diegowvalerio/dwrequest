@@ -6,20 +6,20 @@ class ServiceUsuario{
 
   final _dao = GetIt.I.get<DaoUsuario>();
 
-  save(Usuario usuario){
-    _dao.save(usuario);
+  save(Usuario usuario) async {
+    await _dao.save(usuario);
   }
 
-  remove(int id){
-    _dao.remove(id);
+  remove(int id) async {
+   await _dao.remove(id);
   }
 
-  Future<List<Usuario>> find(){
-    return _dao.find();
+  Future<List<Usuario>> find() async {
+    return await _dao.find();
   }
 
-  removeAll(){
-    _dao.removeAll();
+  removeAll() async {
+    await _dao.removeAll();
   }
 
 }

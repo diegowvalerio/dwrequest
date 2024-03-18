@@ -16,7 +16,7 @@ import javax.net.ssl.HttpsURLConnection;
 
 import com.google.gson.Gson;
 
-import br.com.dw.request.classe.ConfCadastro;
+import br.com.dw.request.entidades.ConfCadastro;
 import br.com.dw.request.integracao.SintegraWS_Saldo;
 import br.com.dw.request.servico.ServicoConfCadastro;
 import br.com.dw.request.util.FacesMessageUtil;

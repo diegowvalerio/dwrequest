@@ -6,8 +6,8 @@ import java.util.List;
 import javax.enterprise.context.Dependent;
 import javax.inject.Inject;
 
-import br.com.dw.request.classe.Modulo;
 import br.com.dw.request.dao.DAOModulo;
+import br.com.dw.request.entidades.Modulo;
 import br.com.dw.request.generico.Transacao;
 
 @Dependent

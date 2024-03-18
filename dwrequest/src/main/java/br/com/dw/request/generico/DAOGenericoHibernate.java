@@ -12,8 +12,8 @@ import org.hibernate.Session;
 import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Restrictions;
 
-import br.com.dw.request.classe.CadastroGeral;
-import br.com.dw.request.classe.Cidade;
+import br.com.dw.request.entidades.CadastroGeral;
+import br.com.dw.request.entidades.Cidade;
 
 
 public class DAOGenericoHibernate<E> implements DAOGenerico<E>, Serializable{

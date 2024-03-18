@@ -23,15 +23,14 @@ import javax.servlet.http.HttpSession;
 
 import com.google.gson.Gson;
 
-import br.com.dw.request.classe.CadastroGeral;
-import br.com.dw.request.classe.Cidade;
-import br.com.dw.request.classe.ConfCadastro;
-import br.com.dw.request.classe.Contato;
-import br.com.dw.request.classe.Endereco;
-import br.com.dw.request.classe.Estado;
+import br.com.dw.request.entidades.CadastroGeral;
+import br.com.dw.request.entidades.Cidade;
+import br.com.dw.request.entidades.ConfCadastro;
+import br.com.dw.request.entidades.Contato;
+import br.com.dw.request.entidades.Endereco;
+import br.com.dw.request.entidades.Estado;
 import br.com.dw.request.integracao.SintegraWS_CPF;
 import br.com.dw.request.integracao.SintegraWS_Cnpj;
-import br.com.dw.request.integracao.SintegraWS_Ibge;
 import br.com.dw.request.integracao.ViaCep;
 import br.com.dw.request.servico.ServicoCadastroGeral;
 import br.com.dw.request.servico.ServicoCidade;
@@ -137,6 +136,9 @@ public class BeanCadastroGeral implements Serializable{
 	public String salvar(){
 		if(cadastrogeral.getIdcadastrogeral() == null){
 			cadastrogeral.setDtcadastro(data);
+		}
+		if(cadastrogeral.getBocliente()==false) {
+			cadastrogeral.setVendedor(null);
 		}
 		try{
 		cadastrogeral.setEnderecos(enderecos);

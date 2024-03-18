@@ -18,7 +18,8 @@ public class IniciaReset extends Application {
 	
 	public void addReset(Set<Class<?>> resources){
 		resources.add(API_Usuario.class);
-
+		resources.add(API_CondPgto.class);
+		resources.add(API_FormPag.class);
 	}
 
 }

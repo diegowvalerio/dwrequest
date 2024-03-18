@@ -4,8 +4,8 @@ import java.io.Serializable;
 
 import javax.enterprise.context.Dependent;
 
-import br.com.dw.request.classe.Empresa;
 import br.com.dw.request.dao.DAOEmpresa;
+import br.com.dw.request.entidades.Empresa;
 import br.com.dw.request.generico.DAOGenericoHibernate;
 
 @Dependent

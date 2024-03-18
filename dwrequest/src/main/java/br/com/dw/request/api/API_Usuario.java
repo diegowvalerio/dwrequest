@@ -15,7 +15,7 @@ import javax.ws.rs.core.MediaType;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-import br.com.dw.request.classe.Usuario;
+import br.com.dw.request.entidades.Usuario;
 import br.com.dw.request.servico.ServicoUsuario;
 
 

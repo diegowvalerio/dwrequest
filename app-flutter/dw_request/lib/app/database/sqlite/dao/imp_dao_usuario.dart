@@ -28,7 +28,7 @@ Database? _db;
   remove(int id) async{
      _db = await Conexao.get();
      var sql ='DELETE FROM usuario WHERE id = ?';
-     _db?.rawDelete(sql,[id]);
+   await  _db?.rawDelete(sql,[id]);
   }
 
   @override
@@ -36,7 +36,7 @@ Database? _db;
     _db = await Conexao.get();
     String sql;
     sql = 'INSERT INTO usuario (id,nome,situacao,login,senha) VALUES(?,?,?,?,?)';
-    _db?.rawInsert(sql,[usuario.id,usuario.nome,usuario.situacao,usuario.login,usuario.senha]);
+   await _db?.rawInsert(sql,[usuario.id,usuario.nome,usuario.situacao,usuario.login,usuario.senha]);
     
   }
   
@@ -44,7 +44,7 @@ Database? _db;
   removeAll() async{
     _db = await Conexao.get();
      var sql ='DELETE FROM usuario';
-     _db?.rawDelete(sql);
+     await _db?.rawDelete(sql);
   }
 
 }

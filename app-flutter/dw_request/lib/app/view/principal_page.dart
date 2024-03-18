@@ -1,4 +1,8 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_exit_app/flutter_exit_app.dart';
 
 class PrincipalPage extends StatelessWidget {
   const PrincipalPage({super.key});
@@ -38,6 +42,36 @@ class PrincipalPage extends StatelessWidget {
     }
   }
 
+  Future confirmarsaida(BuildContext context){
+    return showDialog(
+                context: context,
+                builder: (context) {
+                  return AlertDialog(
+                    title: const Text('Confirmação'),
+                    content: const Text('Você deseja realmente sair do App ?'),
+                    actions: [
+                      TextButton(
+                      onPressed: () {
+                        if (Platform.isIOS) {
+                        SystemChannels.platform.invokeMethod('SystemNavigator.pop');
+                        }else{
+                          FlutterExitApp.exitApp();
+                        }
+                      },
+                       child: const Text('Sim'),
+                      ),
+                      TextButton(
+                      onPressed: () {
+                        Navigator.pop(context, false);
+                      },
+                       child: const Text('Não'),
+                      ),
+                    ],
+                  );
+                },
+              );          
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -48,7 +82,7 @@ class PrincipalPage extends StatelessWidget {
             color: Colors.white,
           ),
         ),
-        backgroundColor: const Color.fromARGB(255, 58, 158, 183),
+        backgroundColor: const Color.fromARGB(255, 55, 145, 230),
       ),
       drawer: Drawer(
         child: ListView(
@@ -59,8 +93,8 @@ class PrincipalPage extends StatelessWidget {
                 child: const SizedBox(
                   height: 100.0,
                   child: DrawerHeader(
-                decoration: const BoxDecoration(
-                color: Color.fromARGB(255, 58, 158, 183),
+                decoration: BoxDecoration(
+                color: Color.fromARGB(255, 55, 145, 230),
                 ),
                child: Text.rich(
                   TextSpan(
@@ -193,6 +227,24 @@ class PrincipalPage extends StatelessWidget {
               color: Colors.black38,
             ),
             //----------------------end code-------------------//
+            ListTile(
+              leading: Image.asset(
+                "assets/imagens/logo.png",
+                width: 25,
+                height: 25,
+                fit: BoxFit.fill,
+                color: Colors.black54,
+              ),
+              title: const Text(
+                "Sair",
+                style: TextStyle(
+                  fontSize: 15.0,
+                  color: Colors.black,
+                  letterSpacing: 0,
+                ),
+              ),
+              onTap: () => confirmarsaida(context),
+            ),
           ],
         ),
       ),
