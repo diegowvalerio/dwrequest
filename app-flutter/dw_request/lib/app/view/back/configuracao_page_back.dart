@@ -2,9 +2,11 @@
 
 import 'dart:convert';
 
+import 'package:dw_request/app/domain/entity/cfop.dart';
 import 'package:dw_request/app/domain/entity/condpgto.dart';
 import 'package:dw_request/app/domain/entity/formapag.dart';
 import 'package:dw_request/app/domain/entity/usuario.dart';
+import 'package:dw_request/app/domain/service/service_cfop.dart';
 import 'package:dw_request/app/domain/service/service_condpgto.dart';
 import 'package:dw_request/app/domain/service/service_formapag.dart';
 import 'package:dw_request/app/domain/service/service_usuario.dart';
@@ -22,6 +24,7 @@ abstract class _ConfiguracaoPageBack with Store{
   final _servico = GetIt.I.get<ServiceUsuario>();
   final _servicoCondpgto = GetIt.I.get<ServiceCondPgto>();
   final _servicoFormaPag = GetIt.I.get<ServiceFormaPag>();
+  final _servicoCfop = GetIt.I.get<ServiceCfop>();
 
   String? erro = "1";
   @observable
@@ -122,7 +125,22 @@ abstract class _ConfiguracaoPageBack with Store{
         var response = await http.get(uri);
         var statusCode = response.statusCode;
       if(statusCode == 200){
-        Iterable list= json.decode(response.body);
+        
+        var t = json.decode(response.body);
+        var usuario = Usuario(
+              id: t['idusuario'],
+              login: t['login'].toString(),
+              nome: t['nome'],
+              senha: t['senha'].toString(),
+              situacao: t['situacao'].toString(),
+              tipo : t['tipo']              
+              );
+        await _servico.removeAll();
+        await salvaUsuario(usuario);
+        await salvaCondPgto(urlControler.text, login);
+        await salvaFormaPag(urlControler.text);
+
+        /*Iterable list= json.decode(response.body);
         for(Map<String,dynamic>item in list){
           var usuario = Usuario(
               id: item['idusuario'],
@@ -135,14 +153,15 @@ abstract class _ConfiguracaoPageBack with Store{
         }
         await _servico.removeAll();
         await salvaUsuario(listausuario.first);
-        await salvaCondPgto(urlControler.text, login);
-        await salvaFormaPag(urlControler.text);
-
+        //await salvaCondPgto(urlControler.text, login);
+        //await salvaFormaPag(urlControler.text);
+*/
       }else{
         erro = "Erro:{$statusCode} Não foi possivel Baixar Dados!";
       }
       }catch(e){
         erro = "Erro:"+e.toString();
+        print(erro);
       }  
   }
   
@@ -191,6 +210,7 @@ abstract class _ConfiguracaoPageBack with Store{
       }
       }catch(e){
         erro = "Erro:"+e.toString();
+        print(erro);
       } 
   }
   
@@ -230,5 +250,39 @@ abstract class _ConfiguracaoPageBack with Store{
       } 
   }
 
+salvaCfop(String urlC) async {
+    urlC = urlC+"/dwrequest/reset/cfop";
+
+    var lista =<Cfop>[];
+    var uri = Uri.parse(urlC);
+      try{
+        var response = await http.get(uri);
+        var statusCode = response.statusCode;
+      if(statusCode == 200){
+        Iterable list= json.decode(response.body);
+        for(Map<String,dynamic>item in list){
+          var x= Cfop(
+              id : item['cfopid'],
+              cfop: item['nr_cfop']          
+              );
+          lista.add(x);
+        }
+        await _servicoCfop.removeAll();
+        try{
+          for (int i = 0; i < lista.length; i++){
+            Cfop e = lista[i];
+            await _servicoCfop.save(e);
+          }
+          erro = "Cfop Concluido";
+        }catch(e){
+          erro = "Não foi possivel salvar Cfop, Erro: "+e.toString();
+        }
+      }else{
+        erro = "Erro:{$statusCode} Não foi possivel Baixar Cfop!";
+      }
+      }catch(e){
+        erro = "Erro:"+e.toString();
+      } 
+  }
 
 }

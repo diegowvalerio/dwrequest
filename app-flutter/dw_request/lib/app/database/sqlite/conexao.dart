@@ -18,6 +18,7 @@ class Conexao{
           await db.execute(tabela_Usuario);
           await db.execute(tabela_CondPgto);
           await db.execute(tabela_FormaPag);
+          await db.execute(tabela_Cfop);
         },
         );
     }

@@ -1,12 +1,15 @@
 
+import 'package:dw_request/app/database/sqlite/dao/imp_dao_cfop.dart';
 import 'package:dw_request/app/database/sqlite/dao/imp_dao_condpgto.dart';
 import 'package:dw_request/app/database/sqlite/dao/imp_dao_contato.dart';
 import 'package:dw_request/app/database/sqlite/dao/imp_dao_formapag.dart';
 import 'package:dw_request/app/database/sqlite/dao/imp_dao_usuario.dart';
+import 'package:dw_request/app/domain/interface/dao_cfop.dart';
 import 'package:dw_request/app/domain/interface/dao_condpgto.dart';
 import 'package:dw_request/app/domain/interface/dao_contato.dart';
 import 'package:dw_request/app/domain/interface/dao_formapag.dart';
 import 'package:dw_request/app/domain/interface/dao_usuario.dart';
+import 'package:dw_request/app/domain/service/service_cfop.dart';
 import 'package:dw_request/app/domain/service/service_condpgto.dart';
 import 'package:dw_request/app/domain/service/service_formapag.dart';
 import 'package:dw_request/app/domain/service/service_usuario.dart';
@@ -25,5 +28,8 @@ setupInjecao(){
 
   getit.registerSingleton<DaoFormaPag>(ImpDaoFormaPag());
   getit.registerSingleton<ServiceFormaPag>(ServiceFormaPag());
+
+  getit.registerSingleton<DaoCfop>(ImpDaoCfop());
+  getit.registerSingleton<ServiceCfop>(ServiceCfop());
 
 }

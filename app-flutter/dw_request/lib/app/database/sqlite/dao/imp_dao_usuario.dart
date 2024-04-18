@@ -17,7 +17,8 @@ Database? _db;
         nome: linha['nome'],
         situacao: linha['situacao'],
         login: linha['login'],
-        senha: linha['senha']
+        senha: linha['senha'],
+        tipo: linha['tipo']
       );
     }
     );
@@ -35,8 +36,8 @@ Database? _db;
   save(Usuario usuario) async {
     _db = await Conexao.get();
     String sql;
-    sql = 'INSERT INTO usuario (id,nome,situacao,login,senha) VALUES(?,?,?,?,?)';
-   await _db?.rawInsert(sql,[usuario.id,usuario.nome,usuario.situacao,usuario.login,usuario.senha]);
+    sql = 'INSERT INTO usuario (id,nome,situacao,login,senha,tipo) VALUES(?,?,?,?,?,?)';
+   await _db?.rawInsert(sql,[usuario.id,usuario.nome,usuario.situacao,usuario.login,usuario.senha,usuario.tipo]);
     
   }
   

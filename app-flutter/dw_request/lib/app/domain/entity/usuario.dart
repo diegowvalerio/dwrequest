@@ -4,8 +4,9 @@ class Usuario{
   String? situacao;
   String? login;
   String? senha;
+  String? tipo;
 
-  Usuario({this.id,this.nome,this.situacao,this.login,this.senha});
+  Usuario({this.id,this.nome,this.situacao,this.login,this.senha,this.tipo});
 
 }
 

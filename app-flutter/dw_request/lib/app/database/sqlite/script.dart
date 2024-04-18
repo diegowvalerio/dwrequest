@@ -6,7 +6,8 @@ CREATE TABLE IF NOT EXISTS usuario (
   nome varchar(250) not null,
   situacao varchar(5) not null,
   login varchar(10) not null,
-  senha varchar(100) not null
+  senha varchar(100) not null,
+  tipo varchar(50) not null
 );""";
 
 const drop_tabela_usuario = """ drop table usuario """;
@@ -31,3 +32,11 @@ CREATE TABLE IF NOT EXISTS formapag (
 );""";
 
 const drop_tabela_FormaPag = """ drop table formapag """;
+
+const tabela_Cfop = """
+CREATE TABLE IF NOT EXISTS cfop (
+  id int primary key,
+  cfop varchar(4) not null
+);""";
+
+const drop_tabela_Cfop = """ drop table cfop """;
