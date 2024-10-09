@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_exit_app/flutter_exit_app.dart';
+//import 'package:flutter_exit_app/flutter_exit_app.dart';
 
 class PrincipalPage extends StatelessWidget {
   const PrincipalPage({super.key});
@@ -55,7 +55,7 @@ class PrincipalPage extends StatelessWidget {
                         if (Platform.isIOS) {
                         SystemChannels.platform.invokeMethod('SystemNavigator.pop');
                         }else{
-                          FlutterExitApp.exitApp();
+                         // FlutterExitApp.exitApp();
                         }
                       },
                        child: const Text('Sim'),
